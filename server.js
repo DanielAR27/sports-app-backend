@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const userRoutes = require('./routes/userRoutes');
-const sportsRoutes = require('./routes/sportsRoutes');
 
 // Load environment variables
 dotenv.config();
@@ -27,7 +26,6 @@ mongoose.connect(process.env.MONGODB_URI)
 
 // Routes
 app.use('/api/users', userRoutes);
-app.use('/api/sports', sportsRoutes);
 
 // Basic route for testing
 app.get('/', (req, res) => {
