@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const userRoutes = require('./routes/userRoutes');
-const notificationRoutes = require('./routes/notificationRoutes');
+const matchRoutes = require('./routes/matchRoutes'); // Importar las rutas de partidos
 
 // Load environment variables
 dotenv.config();
@@ -65,6 +65,7 @@ app.get('/health', (req, res) => {
 
 // Routes
 app.use('/api/users', userRoutes);
+app.use('/api/matches', matchRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
