@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use('/api/notifications', notificationRoutes);
+
 // Add more detailed logging
 app.use((req, res, next) => {
   console.log(`${new Date().toISOString()} - ${req.method} ${req.originalUrl}`);
@@ -43,7 +43,13 @@ const connectDB = async () => {
     // The routes will handle database errors gracefully
   }
 };
+    // Don't exit the process, let the server continue to run
+    // The routes will handle database errors gracefully
+  }
+};
 
+// Connect to MongoDB
+connectDB();
 // Connect to MongoDB
 connectDB();
 
@@ -65,6 +71,7 @@ app.get('/health', (req, res) => {
 
 // Routes
 app.use('/api/users', userRoutes);
+app.use('/api/matches', matchRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
