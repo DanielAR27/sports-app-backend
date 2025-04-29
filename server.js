@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const userRoutes = require('./routes/userRoutes');
-const matchRoutes = require('./routes/matchRoutes'); // Importar las rutas de partidos
+const notificationRoutes = require('./routes/notificationRoutes');
 
 // Load environment variables
 dotenv.config();
@@ -43,7 +43,13 @@ const connectDB = async () => {
     // The routes will handle database errors gracefully
   }
 };
+    // Don't exit the process, let the server continue to run
+    // The routes will handle database errors gracefully
+  }
+};
 
+// Connect to MongoDB
+connectDB();
 // Connect to MongoDB
 connectDB();
 
